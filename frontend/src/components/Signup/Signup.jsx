@@ -3,6 +3,9 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import styles from "../../styles/styles";
 import { Link } from "react-router-dom";
 import { RxAvatar } from "react-icons/rx";
+import axios from "axios";
+import { server } from "../../server";
+import { toast } from "react-toastify";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -11,13 +14,35 @@ const Signup = () => {
   const [visible, setVisible] = useState(false);
   const [avatar, setAvatar] = useState(null);
 
-  const handleSubmit = () => {
-    console.log("submit");
-  };
 
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
     setAvatar(file);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const config = { headers: { "content-type": "multipart/form-data" } };
+    const formData = new FormData();
+    formData.append("file", avatar);
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("password", password);
+    axios
+      .post(`${server}/user/create-user`, formData, config)
+      .then((res) => {
+        if(res.data.success){
+          toast.success(res.data.message);
+          setName("");
+          setEmail("");
+          setPassword("")
+          setAvatar(null)
+        }
+      })
+      .catch((error) => {
+        toast.error(error.response.data.message);
+      });
   };
 
   return (
@@ -30,7 +55,7 @@ const Signup = () => {
 
       <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 sm:rounded-lg sm:px-10">
-          <form action="" className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label
                 htmlFor="email"
@@ -42,7 +67,7 @@ const Signup = () => {
                 <input
                   type="text"
                   name="name"
-                  id="email"
+                  id="name"
                   autoComplete="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
