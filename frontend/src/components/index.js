@@ -4,3 +4,6 @@ export { default as Header } from './Layouts/Header';
 export { default as Hero } from './Route/Hero/Hero';
 export { default as Categories } from "./Route/Categories/Categories";
 export { default as BestDeals } from "./Route/BestDeals/BestDeals";
+export { default as FeatureProduct } from "./Route/FeatureProduct/FeatureProduct";
+export { default as Events } from "./Events/Events";
+export { default as ProductCard } from "./Route/ProductCard/ProductCard";

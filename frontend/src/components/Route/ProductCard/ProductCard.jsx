@@ -1,14 +1,22 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import styles from '../../../styles/styles';
-import { AiFillHeart, AiFillStar, AiOutlineEye, AiOutlineHeart, AiOutlineShoppingCart, AiOutlineStar } from 'react-icons/ai';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import styles from "../../../styles/styles";
+import {
+  AiFillHeart,
+  AiFillStar,
+  AiOutlineEye,
+  AiOutlineHeart,
+  AiOutlineShoppingCart,
+  AiOutlineStar,
+} from "react-icons/ai";
+import ProductDetailCard from "../ProductDetailCard/ProductDetailCard.jsx";
 
-const ProductCard = ({data}) => {
+const ProductCard = ({ data }) => {
   const [click, setClick] = useState(false);
   const [open, setOpen] = useState(false);
 
   const d = data.name;
-  const product_name = d.replace(/\s+/g, "-")
+  const product_name = d.replace(/\s+/g, "-");
   return (
     <>
       <div className="w-full h-[370px] bg-white rounded-lg shadow-sm p-3 relative cursor-pointer">
@@ -100,14 +108,14 @@ const ProductCard = ({data}) => {
           <AiOutlineShoppingCart
             size={22}
             className="cursor-pointer absolute right-2 top-24"
-            onClick={() => setOpen(!open)}
             color="#444"
             title="Add to Cart"
           />
+          {open ? <ProductDetailCard setOpen={setOpen} data={data} /> : null}
         </div>
       </div>
     </>
   );
-}
+};
 
-export default ProductCard
+export default ProductCard;
