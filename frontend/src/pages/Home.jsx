@@ -4,9 +4,13 @@ import {
   Hero,
   Categories,
   BestDeals,
-  FeatureProduct,
   Events,
+  FeatureProduct,
+  Sponsored,
+  Footer,
 } from "../components";
+
+
 
 const HomePage = () => {
   return (
@@ -15,8 +19,10 @@ const HomePage = () => {
       <Hero />
       <Categories />
       <BestDeals />
-      <FeatureProduct />
       <Events />
+      <FeatureProduct />
+      <Sponsored />
+      <Footer />
     </div>
   );
 };

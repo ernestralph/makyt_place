@@ -8,7 +8,7 @@ const Countdown = () => {
    }, 1000);
 
    return () => clearTimeout(timer);
- }, [timeLefttimeLeft]);
+ }, [timeLeft]);
 
  function calculateTimeLeft(){
   let difference = +new Date('2024-01-29') - +new Date(); 

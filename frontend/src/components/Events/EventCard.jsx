@@ -4,7 +4,7 @@ import Countdown from "./Countdown";
 
 const EventCard = () => {
   return (
-    <div className={`w-full block bg-white rounded-lg lg:flex p-2`}>
+    <div className={`w-full block bg-white rounded-lg lg:flex p-2 mb-12`}>
       <div className="w-full m-auto lg:w-[50%]">
         <img src="https://m.media-amazon.com/images/I/31Vle5fVdaL.jpg" alt="" />
       </div>
