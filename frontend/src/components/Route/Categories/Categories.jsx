@@ -10,12 +10,12 @@ const Categories = () => {
   return (
     <>
      <div className={`${styles.section} hiden sm:block`}>
-      <div className={`branding my-12 flex justify-between w-full shadow-sm bg-white p-5 rounded-md`}>
+      <div className={`branding my-12 flex flex-col md:flex-row md:justify-between  w-full shadow-sm bg-white p-5 rounded-md`}>
        {
         brandingData && brandingData.map((i, index)=>(
-         <div className="flex items-start" key={index}>
+         <div className="flex md:items-start w-100 mb-10" key={index}>
           {i.icon}
-          <div className='px-3'>
+          <div className='px-3 ml-3 md:ml-0'>
            <h3 className="font-bold text-sm md:text-base">
             {i.title}
            </h3>
