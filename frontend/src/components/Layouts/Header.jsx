@@ -10,6 +10,8 @@ import DropDown  from "./DropDown";
 import Navbar  from "./Navbar";
 import {useSelector} from  'react-redux';
 import { backend_url } from "../../server";
+import Cart from "../Cart/Cart"
+import Wishlist from "../Wishlist/Wishlist";
 
 const Header = ({activeHeading}) => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -17,6 +19,8 @@ const Header = ({activeHeading}) => {
   const [searchData, setSearchData] = useState(null);
   const [active, setActive] = useState(false);
   const [dropDown, setDropDown] = useState(false);
+  const [openCart, setOpenCart] = useState(false)
+  const [openWishlist, setOpenWishlist] = useState(false)
 
   const handleSearchChange = (e) => {
     const term = e.target.value;
@@ -129,17 +133,22 @@ const Header = ({activeHeading}) => {
           </div>
 
           <div className="flex">
-            <div className="relative cursor-pointer mr-[15px]">
+            <div
+              className="relative cursor-pointer mr-[15px]"
+              onClick={() => setOpenWishlist(true)}
+            >
               <AiOutlineHeart size={30} color="rgb(255 255 255 /83%)" />
               <span className="right-0 top-0 absolute rounded-full bg-[#3bc177] w-4 h-4  top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
                 0
               </span>
             </div>
-            <div className="relative cursor-pointer mr-[15px]">
-              <AiOutlineShoppingCart
-                size={30}
-                color="rgb(255 255 255 /83%)"
-              />
+            <div
+              className="relative cursor-pointer mr-[15px]"
+              onClick={() => {
+                setOpenCart(true);
+              }}
+            >
+              <AiOutlineShoppingCart size={30} color="rgb(255 255 255 /83%)" />
               <span className="right-0 top-0 absolute rounded-full bg-[#3bc177] w-4 h-4  top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
                 0
               </span>
@@ -160,9 +169,15 @@ const Header = ({activeHeading}) => {
               )}
             </div>
           </div>
+
+          {/* Cart Pop Modal */}
+          {openCart ? <Cart setOpenCart={setOpenCart} /> : null}
+
+          {/* Wishlist Pop Modal */}
+          {openWishlist ? <Wishlist setOpenWishlist={setOpenWishlist} /> : null}
         </div>
       </div>
-    </> 
+    </>
   );
 };
 

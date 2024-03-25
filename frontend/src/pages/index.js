@@ -2,6 +2,7 @@ export { default as LoginPage } from './Login';
 export { default as SignupPage } from './Signup';
 export { default as ActivationPage } from './Activation';
 export { default as ProductsPage } from "./Products";
+export { default as ProductDetailsPage } from "./ProductDetails";
 export { default as BestSellingPage } from "./BestSelling";
 export { default as EventsPage } from "./Events";
 export { default as FAQPage } from "./FAQ";
