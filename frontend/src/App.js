@@ -10,10 +10,15 @@ import {
   EventsPage,
   FAQPage,
   ProductDetailsPage,
+  ProfilePage,
 } from "./pages";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./App.css"
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
 import Store from './redux/store';
 import { loadUser } from './redux/actions/user';
 import { useSelector } from 'react-redux';
@@ -28,41 +33,40 @@ const App = () => {
 
   return (
     <>
-      {
-        loading ?(null) : (
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/sign-up" element={<SignupPage />} />
-              <Route
-                path="/activation/:activation_token"
-                element={<ActivationPage />}
-              />
-      
-              <Route path="/products" element={<ProductsPage />} />
-              <Route path="/product/:name" element={<ProductDetailsPage />} />
-              <Route path="/best-selling" element={<BestSellingPage />} />
-              <Route path="/events" element={<EventsPage />} />
-              <Route path="/faq" element={<FAQPage />} />
-            </Routes>
-      
-            <ToastContainer
-              position="bottom-center"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="dark"
+      {loading ? null : (
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/sign-up" element={<SignupPage />} />
+            <Route
+              path="/activation/:activation_token"
+              element={<ActivationPage />}
             />
-          </BrowserRouter>
+            <Route path="/profile" element={<ProfilePage />} />
 
-        )
-      }
+            <Route path="/products" element={<ProductsPage />} />
+            <Route path="/product/:name" element={<ProductDetailsPage />} />
+            <Route path="/best-selling" element={<BestSellingPage />} />
+            <Route path="/events" element={<EventsPage />} />
+
+            <Route path="/faq" element={<FAQPage />} />
+          </Routes>
+
+          <ToastContainer
+            position="bottom-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+          />
+        </BrowserRouter>
+      )}
     </>
   );
 }

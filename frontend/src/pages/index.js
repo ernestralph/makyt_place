@@ -1,6 +1,7 @@
 export { default as LoginPage } from './Login';
 export { default as SignupPage } from './Signup';
 export { default as ActivationPage } from './Activation';
+export { default as ProfilePage } from "./Profile";
 export { default as ProductsPage } from "./Products";
 export { default as ProductDetailsPage } from "./ProductDetails";
 export { default as BestSellingPage } from "./BestSelling";

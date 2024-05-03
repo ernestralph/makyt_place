@@ -86,7 +86,7 @@ const Header = ({activeHeading}) => {
             ) : null}
           </div>
           <div className={`${styles.button}`}>
-            <Link to="/seller">
+            <Link to="/seller"cd>
               <h2 className="flex items-center text-[#fff]">
                 Become Seller
                 <IoIosArrowForward className="ml-1" />
@@ -155,9 +155,9 @@ const Header = ({activeHeading}) => {
             </div>
             <div className="relative cursor-pointer mr-[15px]">
               {isAuthenticated ? (
-                <Link to={"/login"}>
+                <Link to={"/profile"}>
                   <img
-                    src={`${backend_url}/${user.avatar.url}`}
+                    src={`${backend_url}/${user?.avatar.url}`}
                     alt=""
                     className="w-[35px] h-[35px] rounded-full"
                   />
